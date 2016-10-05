@@ -1,4 +1,4 @@
-package com.esgi.handiwe.DAL;
+package com.esgi.handiwe.Model;
 
 /**
  * Created by Pico on 05/10/2016.

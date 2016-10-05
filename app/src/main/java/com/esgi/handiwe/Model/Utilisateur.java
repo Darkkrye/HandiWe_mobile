@@ -1,4 +1,4 @@
-package com.esgi.handiwe.DAL;
+package com.esgi.handiwe.Model;
 
 import java.util.Date;
 
