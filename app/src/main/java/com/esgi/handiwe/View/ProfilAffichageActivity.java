@@ -1,13 +1,15 @@
-package com.esgi.handiwe;
+package com.esgi.handiwe.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ConversationActivity extends AppCompatActivity {
+import com.esgi.handiwe.R;
+
+public class ProfilAffichageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_conversation);
+        setContentView(R.layout.activity_profil_affichage);
     }
 }
