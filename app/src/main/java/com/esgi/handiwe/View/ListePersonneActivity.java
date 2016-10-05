@@ -1,13 +1,15 @@
-package com.esgi.handiwe;
+package com.esgi.handiwe.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class NouveauMessageActivity extends AppCompatActivity {
+import com.esgi.handiwe.R;
+
+public class ListePersonneActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nouveau_message);
+        setContentView(R.layout.activity_liste_personne);
     }
 }

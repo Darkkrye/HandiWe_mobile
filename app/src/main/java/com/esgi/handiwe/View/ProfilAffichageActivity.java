@@ -1,7 +1,9 @@
-package com.esgi.handiwe;
+package com.esgi.handiwe.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.esgi.handiwe.R;
 
 public class ProfilAffichageActivity extends AppCompatActivity {
 
