@@ -1,7 +1,7 @@
 package com.esgi.handiwe.Model;
 
 /**
- * Created by nico on 06/10/2016.
+ * Created by Pico on 06/10/2016.
  */
 
 import com.google.gson.annotations.SerializedName;
@@ -45,22 +45,11 @@ public class Vehicule {
     private String  _rampe;
 
     @SerializedName("isReserved")
-    private boolean   isReserve;
+    private boolean  isReserve;
 
-    public Vehicule() {}
-
-    public Vehicule(String _marque, String _modele, int _annee, int _fauteuil, int _place, String _departement, int _prix) {
-        this._marque = _marque;
-        this._modele = _modele;
-        this._annee = _annee;
-        this._fauteuil = _fauteuil;
-        this._place = _place;
-        this._departement = _departement;
-        this._prix = _prix;
-    }
+    public Vehicule(){}
 
     public Vehicule(int _id, String _marque, String _modele, int _annee, int _fauteuil, int _place, String _photos, String _departement, String _ville, int _prix, String _prorpietaire, String _rampe, boolean isReserve) {
-
         this._id = _id;
         this._marque = _marque;
         this._modele = _modele;
