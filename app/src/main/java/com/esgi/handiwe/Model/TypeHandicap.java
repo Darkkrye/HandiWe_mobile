@@ -8,11 +8,20 @@ import com.google.gson.annotations.SerializedName;
 
 public class TypeHandicap {
 
+    @SerializedName("idHANDICAP")
     private int     _id;
+    @SerializedName("name")
     private String  _libelle;
+    @SerializedName("type")
+    private String _type;
 
+    public TypeHandicap(){}
 
-
+    public TypeHandicap(int _id, String _libelle, String _type) {
+        this._id = _id;
+        this._libelle = _libelle;
+        this._type = _type;
+    }
 
     //region GETTER
 
@@ -24,6 +33,9 @@ public class TypeHandicap {
         return _libelle;
     }
 
+    public String get_type() {
+        return _type;
+    }
 
     //endregion
 
@@ -37,6 +49,9 @@ public class TypeHandicap {
         this._libelle = _libelle;
     }
 
+    public void set_type(String _type) {
+        this._type = _type;
+    }
 
     //endregion
 }

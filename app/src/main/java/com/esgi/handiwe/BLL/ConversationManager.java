@@ -25,7 +25,7 @@ public class ConversationManager {
     private ArrayList<Conversation> listConversation;
 
     //region API
-    public void apiGetAllconversation() {
+    public void apiGetAllconversation(int id) {
         ArrayList<Conversation> listConversation = new ArrayList<Conversation>();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -35,7 +35,7 @@ public class ConversationManager {
 
         ApiService apiService = retrofit.create(ApiService.class);
 
-        Call<ArrayList<Conversation>> call = apiService.listConversation();
+        Call<ArrayList<Conversation>> call = apiService.getConversationById(id);
         call.enqueue(new Callback<ArrayList<Conversation>>(){
             @Override
             public void onResponse(Call<ArrayList<Conversation>> call, Response<ArrayList<Conversation>> response) {

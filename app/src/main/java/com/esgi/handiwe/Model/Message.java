@@ -19,6 +19,12 @@ public class Message {
         set_contenu(contenu);
     }
 
+    public Message(int _id, int _idConversation, String _contenu) {
+        this._id = _id;
+        this._idConversation = _idConversation;
+        this._contenu = _contenu;
+    }
+
     //region GETTER
 
     public int get_id() {

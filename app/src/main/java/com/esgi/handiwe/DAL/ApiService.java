@@ -42,6 +42,9 @@ public interface ApiService {
     @GET("/cars")
     Call<ArrayList<Vehicule>> listVehicule();
 
+    @GET("/handicaps")
+    Call<ArrayList<TypeHandicap>> listHandicap();
+
     @PUT("/cars/reserve/{id}")
     void setVehiculeReserve(@Path("id") int id);
 
@@ -53,19 +56,19 @@ public interface ApiService {
     Call<Utilisateur> getLieuxById(@Path("id") int id);
 
     @GET("/places/name/{name}")
-    Call<Utilisateur> getUtilisateurByMailPassword(@Path("name") String name);
+    Call<ArrayList<Conversation>> getLieuxByName(@Path("name") String name);
 
+    @GET("/conversations/{idUser}")
+    Call<ArrayList<Message>> getConversationById(@Path("idUser") int id);
+
+    @GET("/messages/{idUserA}/{idUserB}")
+    Call<Utilisateur> getMessageByBothUser(@Path("idUserA") String idA,@Path("idUserB") String idB);
     /**
      *
 
-
      */
 
-    @GET("/conversations")
-    Call<ArrayList<Conversation>> listConversation();
 
-    @GET("/disponibilite")
-    Call<ArrayList<Disponibilite>> listDisponibilite();
 
 
 

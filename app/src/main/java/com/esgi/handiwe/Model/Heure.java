@@ -13,6 +13,13 @@ public class Heure {
     private int _heureDebut;
     private int _heureFin;
 
+    public Heure(int _id, int _idDisponibilite, int _heureDebut, int _heureFin) {
+        this._id = _id;
+        this._idDisponibilite = _idDisponibilite;
+        this._heureDebut = _heureDebut;
+        this._heureFin = _heureFin;
+    }
+
 
     //region GETTER
 

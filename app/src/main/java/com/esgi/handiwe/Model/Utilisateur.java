@@ -55,6 +55,21 @@ public class Utilisateur {
         set_moteDePasse(moteDePasse);
     }
 
+    public Utilisateur(int _id, String _nom, String _prenom, Date _naissance, String _adresse, String _codePostal, String _ville, String _mail, String _telephone, String _moteDePasse, String _image, boolean isPrivate) {
+        this._id = _id;
+        this._nom = _nom;
+        this._prenom = _prenom;
+        this._naissance = _naissance;
+        this._adresse = _adresse;
+        this._codePostal = _codePostal;
+        this._ville = _ville;
+        this._mail = _mail;
+        this._telephone = _telephone;
+        this._moteDePasse = _moteDePasse;
+        this._image = _image;
+        this.isPrivate = isPrivate;
+    }
+
     //region GETTER
 
     public int get_id() {

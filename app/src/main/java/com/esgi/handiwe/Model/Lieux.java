@@ -20,7 +20,19 @@ public class Lieux {
     private boolean hasMateriel;
     private boolean hasFreeAccess;
 
-
+    public Lieux(int _id, String _nom, String _type, String _adresse, String _codePostal, String _ville, String _mail, String _telephone, String _responsable, boolean hasMateriel, boolean hasFreeAccess) {
+        this._id = _id;
+        this._nom = _nom;
+        this._type = _type;
+        this._adresse = _adresse;
+        this._codePostal = _codePostal;
+        this._ville = _ville;
+        this._mail = _mail;
+        this._telephone = _telephone;
+        this._responsable = _responsable;
+        this.hasMateriel = hasMateriel;
+        this.hasFreeAccess = hasFreeAccess;
+    }
 
 
     //region GETTER

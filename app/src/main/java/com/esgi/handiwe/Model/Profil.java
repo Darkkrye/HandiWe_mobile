@@ -23,6 +23,17 @@ public class Profil {
         this.listDisponibilite = new ArrayList<Integer>();
     }
 
+    public Profil(int _id, int _idUtilisateur, int _idSport, int _idLieu, int _idTypeHandicap, List<Integer> listDisponibilite, boolean isInClub, String _nomClub, String _licence) {
+        this._id = _id;
+        this._idUtilisateur = _idUtilisateur;
+        this._idSport = _idSport;
+        this._idLieu = _idLieu;
+        this._idTypeHandicap = _idTypeHandicap;
+        this.listDisponibilite = listDisponibilite;
+        this.isInClub = isInClub;
+        this._nomClub = _nomClub;
+        this._licence = _licence;
+    }
 
     //region GETTER
 

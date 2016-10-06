@@ -2,6 +2,7 @@ package com.esgi.handiwe.BLL;
 
 import com.esgi.handiwe.DAL.ApiService;
 import com.esgi.handiwe.Model.Conversation;
+import com.esgi.handiwe.Model.TypeHandicap;
 
 import java.util.ArrayList;
 
@@ -17,11 +18,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TypeHandicapManager {
 
-    private ArrayList<Conversation> listConversation;
+    private ArrayList<TypeHandicap> listHandicaps;
 
     //region API
-    public void apiSetAllconversation() {
-        ArrayList<Conversation> listConversation = new ArrayList<Conversation>();
+    public void apiSetAllTypeHandicap() {
+        ArrayList<TypeHandicap> listTypeHandicap = new ArrayList<TypeHandicap>();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiService.ENDPOINT)
@@ -30,18 +31,18 @@ public class TypeHandicapManager {
 
         ApiService apiService = retrofit.create(ApiService.class);
 
-        Call<ArrayList<Conversation>> call = apiService.listConversation();
-        call.enqueue(new Callback<ArrayList<Conversation>>(){
+        Call<ArrayList<TypeHandicap>> call = apiService.listHandicap();
+        call.enqueue(new Callback<ArrayList<TypeHandicap>>(){
             @Override
-            public void onResponse(Call<ArrayList<Conversation>> call, Response<ArrayList<Conversation>> response) {
+            public void onResponse(Call<ArrayList<TypeHandicap>> call, Response<ArrayList<TypeHandicap>> response) {
                 int statusCode = response.code();
-                ArrayList<Conversation> conversations = response.body();
-                setAllConversation(conversations, statusCode);
+                ArrayList<TypeHandicap> handicaps = response.body();
+                setAllHandicaps(handicaps, statusCode);
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Conversation>> call, Throwable throwable) {
-                setAllConversation(new ArrayList<Conversation>(), 0);
+            public void onFailure(Call<ArrayList<TypeHandicap>> call, Throwable throwable) {
+                setAllHandicaps(new ArrayList<TypeHandicap>(), 0);
             }
 
 
@@ -50,11 +51,35 @@ public class TypeHandicapManager {
 
     //endregion
 
-    public void setAllConversation(ArrayList<Conversation> list, int statusCode){
-        listConversation = list;
+    public void setAllHandicaps(ArrayList<TypeHandicap> list, int statusCode){
+        listHandicaps = list;
+
+        listHandicaps = list;
+        boolean exist=false;
+        for (TypeHandicap newHandicap:list) {
+            for (TypeHandicap item : listHandicaps) {
+                if (item.get_id() == newHandicap.get_id()) {
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                listHandicaps.add(newHandicap);
+            }
+            exist = false;
+        }
     }
 
-    public ArrayList<Conversation> getListConversation() {
-        return listConversation;
+    public ArrayList<TypeHandicap> getListHandicaps() {
+        return listHandicaps;
+    }
+
+    public TypeHandicap getHandicapById(int id){
+        TypeHandicap user = new TypeHandicap();
+        for (TypeHandicap item:listHandicaps) {
+            if (item.get_id() == id) {
+                user = item;
+            }
+        }
+        return user;
     }
 }

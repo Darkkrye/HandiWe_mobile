@@ -15,7 +15,12 @@ public class Disponibilite {
     private int     _idSport;
     private Jours   _jours;
 
-
+    public Disponibilite(int _id, int _idUtilisateur, int _idSport, Jours _jours) {
+        this._id = _id;
+        this._idUtilisateur = _idUtilisateur;
+        this._idSport = _idSport;
+        this._jours = _jours;
+    }
 
     //region GETTER
 
