@@ -40,7 +40,7 @@ public class ServiceActivity extends AppCompatActivity {
 
         //listCars.setAdapter(arrayAdapter);
 
-        VehiculeManager vh = new VehiculeManager(){
+        /*VehiculeManager vh = new VehiculeManager(){
             @Override
             public void onFinish() {
                 Log.d("TEST", "TEST TEST TEST");
@@ -50,7 +50,7 @@ public class ServiceActivity extends AppCompatActivity {
                 listCars.setAdapter(new RowItemAdapter(getApplication(), vehi));
                 Log.d("TEST", getListVehicule().size()+"");
             }
-        };
+        };*/
 
 //        Vehicule[] vehi = new Vehicule[vh.getListVehicule().size()];
 //        for(int i = 0; i < vh.getListVehicule().size(); i++)
