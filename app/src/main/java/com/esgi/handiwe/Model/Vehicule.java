@@ -4,20 +4,50 @@ package com.esgi.handiwe.Model;
  * Created by Pico on 06/10/2016.
  */
 
+import com.google.gson.annotations.SerializedName;
+
 public class Vehicule {
 
+    @SerializedName("idCARS")
     private int _id;
+
+    @SerializedName("marque")
     private String _marque;
+
+    @SerializedName("modele")
     private String _modele;
+
+    @SerializedName("annee")
     private int _annee;
+
+    @SerializedName("seat")
     private int _fauteuil;
 
-    private String _photos;
-    private String _departement;
-    private float   _prix;
+    @SerializedName("wheelchairSeat")
+    private int _place;
 
-    public Vehicule() {
-    }
+    @SerializedName("image")
+    private String _photos;
+
+    @SerializedName("")
+    private String _departement;
+
+    @SerializedName("city")
+    private String _ville;
+
+    @SerializedName("priceDay")
+    private float _prix;
+
+    @SerializedName("ownerName")
+    private String  _prorpietaire;
+
+    @SerializedName("ramp")
+    private String  _rampe;
+
+    @SerializedName("isReserved")
+    private boolean   isReserve;
+
+    public Vehicule() {}
 
     //region GETTER
 
@@ -53,6 +83,25 @@ public class Vehicule {
         return _prix;
     }
 
+    public int get_place() {
+        return _place;
+    }
+
+    public String get_ville() {
+        return _ville;
+    }
+
+    public String get_prorpietaire() {
+        return _prorpietaire;
+    }
+
+    public String get_rampe() {
+        return _rampe;
+    }
+
+    public boolean isReserve() {
+        return isReserve;
+    }
 
     //endregion
 
@@ -90,6 +139,25 @@ public class Vehicule {
         this._prix = _prix;
     }
 
+    public void set_place(int _place) {
+        this._place = _place;
+    }
+
+    public void set_ville(String _ville) {
+        this._ville = _ville;
+    }
+
+    public void set_prorpietaire(String _prorpietaire) {
+        this._prorpietaire = _prorpietaire;
+    }
+
+    public void set_rampe(String _rampe) {
+        this._rampe = _rampe;
+    }
+
+    public void setReserve(boolean reserve) {
+        isReserve = reserve;
+    }
 
     //endregion
 

@@ -4,6 +4,8 @@ package com.esgi.handiwe.Model;
  * Created by Pico on 05/10/2016.
  */
 
+import com.google.gson.annotations.SerializedName;
+
 public class Sport {
 
     private int     _id;

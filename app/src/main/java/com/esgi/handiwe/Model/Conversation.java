@@ -4,10 +4,15 @@ package com.esgi.handiwe.Model;
  * Created by Pico on 05/10/2016.
  */
 
+import com.google.gson.annotations.SerializedName;
+
 public class Conversation {
 
+    @SerializedName("")
     private int _id;
+    @SerializedName("idUSERA")
     private int _idUtilisateur1;
+    @SerializedName("idUSERB")
     private int _idUtilisateur2;
 
     //region GETTER

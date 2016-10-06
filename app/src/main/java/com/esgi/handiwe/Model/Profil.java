@@ -5,6 +5,7 @@ package com.esgi.handiwe.Model;
  */
 import java.util.ArrayList;
 import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
 public class Profil {
 
