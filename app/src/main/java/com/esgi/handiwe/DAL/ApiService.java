@@ -32,17 +32,35 @@ public interface ApiService {
     @GET("/users")
     Call<ArrayList<Utilisateur>> listUtilisateur();
 
-    @GET("/conversations")
-    Call<ArrayList<Conversation>> listConversation();
+    @GET("/users/{id}")
+    Call<Utilisateur> getUtilisateurById(@Path("id") int id,);
 
-    @GET("/disponibilite")
-    Call<ArrayList<Disponibilite>> listDisponibilite();
+    @GET("/users/mail/{mail}/{password}")
+    Call<Utilisateur> getUtilisateurByMailPassword(
+            @Path("mail") String mail, @Path("password") String password );
 
     @GET("/cars")
     Call<ArrayList<Vehicule>> listVehicule();
 
     @PUT("/cars/reserve/{id}")
     void setVehiculeReserve(@Path("id") int id);
+
+
+    @GET("/conversations")
+    Call<ArrayList<Conversation>> listConversation();
+
+    @GET("/disponibilite")
+    Call<ArrayList<Disponibilite>> listDisponibilite();
+
+
+    /**
+     *
+     * /users
+     /users/:id
+     /users/mail/:mail/:password
+
+
+     */
 
 
 

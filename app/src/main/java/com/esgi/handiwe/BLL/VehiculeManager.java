@@ -76,7 +76,12 @@ public class VehiculeManager {
     }
 
     public void setVehiculeReserve(int id){
-       // listVehicule.
+        for (Vehicule item : listVehicule) {
+            if (item.get_id()==id){
+                item.setReserve(true);
+            }
+        }
+        apiSetVehiculeReserve(id);
     }
 
 }

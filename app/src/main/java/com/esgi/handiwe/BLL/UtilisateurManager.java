@@ -20,6 +20,14 @@ public class UtilisateurManager {
 
     private ArrayList<Utilisateur> listUtiliasteur;
 
+    public UtilisateurManager(){
+        apiGetAllUtilisateur();
+    }
+    public UtilisateurManager(String mail, String mdp){
+        apiGetAllUtiligetUtilisateurByMailPassword();
+    }
+
+
     //region API
     public void apiGetAllUtilisateur() {
         ArrayList<Utilisateur> listeUtilisateur = new ArrayList<Utilisateur>();
@@ -49,13 +57,73 @@ public class UtilisateurManager {
         });
     }
 
+    public void getUtilisateurByMailPassword(String mail, String password){
+        Utilisateur utilisateur = new Utilisateur();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ApiService.ENDPOINT)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiService apiService = retrofit.create(ApiService.class);
+
+        Call<Utilisateur> call = apiService.getUtilisateurByMailPassword(mail,password);
+        call.enqueue(new Callback<Utilisateur>(){
+             @Override
+             public void onResponse(Call<Utilisateur> call, Response<Utilisateur> response) {
+                 int statusCode = response.code();
+                 Utilisateur utilisateur = response.body();
+                 setUtilisateur(utilisateur, statusCode);
+             }
+
+             @Override
+             public void onFailure(Call<Utilisateur> call, Throwable throwable) {
+
+             }
+
+    });
+    }
     //endregion
+
+
+
+    public void setUtilisateur(Utilisateur user, int statusCode){
+        if(listUtiliasteur == null) {
+            listUtiliasteur = new ArrayList<Utilisateur>();
+        }
+        listUtiliasteur.add(user);
+    }
+
 
     public void setAllUtilisateur(ArrayList<Utilisateur> list, int statusCode){
         listUtiliasteur = list;
+        boolean exist=false;
+        for (Utilisateur newUser:list) {
+            for (Utilisateur item : listUtiliasteur) {
+                if (item.get_id() == newUser.get_id()) {
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                listUtiliasteur.add(newUser);
+            }
+            exist = false;
+        }
     }
 
     public ArrayList<Utilisateur> getListUtiliasteur() {
         return listUtiliasteur;
+    }
+
+    public Utilisateur getUtilisateurById(int id){
+        Utilisateur user;
+        for (Utilisateur item:listUtiliasteur) {
+            if (item.get_id() == id) {
+                user = item;
+            }
+        }
+    }
+
+
     }
 }

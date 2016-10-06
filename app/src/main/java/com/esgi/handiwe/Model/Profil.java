@@ -5,6 +5,7 @@ package com.esgi.handiwe.Model;
  */
 import java.util.ArrayList;
 import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
 public class Profil {
 
@@ -13,7 +14,6 @@ public class Profil {
     private int     _idSport;
     private int     _idLieu;
     private int     _idTypeHandicap;
-
     private List<Integer> listDisponibilite;
     private boolean isInClub;
     private String  _nomClub;

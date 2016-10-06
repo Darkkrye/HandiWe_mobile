@@ -6,21 +6,46 @@ import java.util.Date;
  * Created by Pico on 05/10/2016.
  */
 
+import com.google.gson.annotations.SerializedName;
+
 public class Utilisateur {
 
+    @SerializedName("idUSER")
     private int     _id;
+
+    @SerializedName("lastName")
     private String  _nom;
+
+    @SerializedName("firstName")
     private String  _prenom;
+
+    @SerializedName("birthdayDate")
     private Date    _naissance;
+
+    @SerializedName("address")
     private String  _adresse;
+
+    @SerializedName("zipCode")
     private String  _codePostal;
+
+    @SerializedName("city")
     private String  _ville;
+
+    @SerializedName("mail")
     private String  _mail;
+
+    @SerializedName("telephone")
     private String  _telephone;
+
+    @SerializedName("")
     private String  _moteDePasse;
-    private String  _licence;
+
+    @SerializedName("")
     private String  _image;
+
+    @SerializedName("")
     private boolean isPrivate;
+
 
     public Utilisateur(){}
 
@@ -72,9 +97,6 @@ public class Utilisateur {
         return _moteDePasse;
     }
 
-    public String get_licence() {
-        return _licence;
-    }
 
     public String get_image() {
         return _image;
@@ -130,10 +152,6 @@ public class Utilisateur {
         this._moteDePasse = moteDePasse;
     }
 
-    public void set_licence(String licence) {
-        this._licence = licence;
-    }
-
     public void set_image(String image) {
         this._image = image;
     }
@@ -141,4 +159,7 @@ public class Utilisateur {
     public void setPrivate(boolean aPrivate) {
         isPrivate = aPrivate;
     }
+
+
+    //endregion
 }
