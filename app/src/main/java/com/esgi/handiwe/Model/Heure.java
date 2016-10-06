@@ -4,12 +4,22 @@ package com.esgi.handiwe.Model;
  * Created by Pico on 05/10/2016.
  */
 
+import com.google.gson.annotations.SerializedName;
+
 public class Heure {
 
+    @SerializedName("")
     private int _id;
     private int _idDisponibilite;
     private int _heureDebut;
     private int _heureFin;
+
+    public Heure(int _id, int _idDisponibilite, int _heureDebut, int _heureFin) {
+        this._id = _id;
+        this._idDisponibilite = _idDisponibilite;
+        this._heureDebut = _heureDebut;
+        this._heureFin = _heureFin;
+    }
 
 
     //region GETTER

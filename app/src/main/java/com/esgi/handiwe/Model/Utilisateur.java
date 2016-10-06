@@ -6,21 +6,46 @@ import java.util.Date;
  * Created by Pico on 05/10/2016.
  */
 
+import com.google.gson.annotations.SerializedName;
+
 public class Utilisateur {
 
+    @SerializedName("idUSER")
     private int     _id;
+
+    @SerializedName("lastName")
     private String  _nom;
+
+    @SerializedName("firstName")
     private String  _prenom;
+
+    @SerializedName("birthdayDate")
     private Date    _naissance;
+
+    @SerializedName("address")
     private String  _adresse;
+
+    @SerializedName("zipCode")
     private String  _codePostal;
+
+    @SerializedName("city")
     private String  _ville;
+
+    @SerializedName("mail")
     private String  _mail;
+
+    @SerializedName("telephone")
     private String  _telephone;
+
+    @SerializedName("pass_word")
     private String  _moteDePasse;
-    private String  _licence;
+
+    @SerializedName("image")
     private String  _image;
+
+    @SerializedName("isProtected")
     private boolean isPrivate;
+
 
     public Utilisateur(){}
 
@@ -28,6 +53,21 @@ public class Utilisateur {
         set_naissance(naissance);
         set_mail(mail);
         set_moteDePasse(moteDePasse);
+    }
+
+    public Utilisateur(int _id, String _nom, String _prenom, Date _naissance, String _adresse, String _codePostal, String _ville, String _mail, String _telephone, String _moteDePasse, String _image, boolean isPrivate) {
+        this._id = _id;
+        this._nom = _nom;
+        this._prenom = _prenom;
+        this._naissance = _naissance;
+        this._adresse = _adresse;
+        this._codePostal = _codePostal;
+        this._ville = _ville;
+        this._mail = _mail;
+        this._telephone = _telephone;
+        this._moteDePasse = _moteDePasse;
+        this._image = _image;
+        this.isPrivate = isPrivate;
     }
 
     //region GETTER
@@ -72,9 +112,6 @@ public class Utilisateur {
         return _moteDePasse;
     }
 
-    public String get_licence() {
-        return _licence;
-    }
 
     public String get_image() {
         return _image;
@@ -128,10 +165,6 @@ public class Utilisateur {
 
     public void set_moteDePasse(String moteDePasse) {
         this._moteDePasse = moteDePasse;
-    }
-
-    public void set_licence(String licence) {
-        this._licence = licence;
     }
 
     public void set_image(String image) {

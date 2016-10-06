@@ -4,6 +4,8 @@ package com.esgi.handiwe.Model;
  * Created by Pico on 05/10/2016.
  */
 
+import com.google.gson.annotations.SerializedName;
+
 public class Message {
 
     private int     _id;
@@ -15,6 +17,12 @@ public class Message {
     public Message(int conversation, String contenu) {
         set_idConversation(conversation);
         set_contenu(contenu);
+    }
+
+    public Message(int _id, int _idConversation, String _contenu) {
+        this._id = _id;
+        this._idConversation = _idConversation;
+        this._contenu = _contenu;
     }
 
     //region GETTER

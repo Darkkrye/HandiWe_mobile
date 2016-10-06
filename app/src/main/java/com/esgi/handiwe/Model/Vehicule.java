@@ -4,7 +4,6 @@ package com.esgi.handiwe.Model;
  * Created by nico on 06/10/2016.
  */
 
-
 import com.google.gson.annotations.SerializedName;
 
 public class Vehicule {
@@ -37,7 +36,7 @@ public class Vehicule {
     private String _ville;
 
     @SerializedName("priceDay")
-    private float _prix;
+    private int _prix;
 
     @SerializedName("ownerName")
     private String  _prorpietaire;
@@ -50,7 +49,7 @@ public class Vehicule {
 
     public Vehicule() {}
 
-    public Vehicule(String _marque, String _modele, int _annee, int _fauteuil, int _place, String _departement, float _prix) {
+    public Vehicule(String _marque, String _modele, int _annee, int _fauteuil, int _place, String _departement, int _prix) {
         this._marque = _marque;
         this._modele = _modele;
         this._annee = _annee;
@@ -60,7 +59,8 @@ public class Vehicule {
         this._prix = _prix;
     }
 
-    public Vehicule(int _id, String _marque, String _modele, int _annee, int _fauteuil, int _place, String _photos, String _departement, String _ville, float _prix, String _prorpietaire, String _rampe, boolean isReserve) {
+    public Vehicule(int _id, String _marque, String _modele, int _annee, int _fauteuil, int _place, String _photos, String _departement, String _ville, int _prix, String _prorpietaire, String _rampe, boolean isReserve) {
+
         this._id = _id;
         this._marque = _marque;
         this._modele = _modele;
@@ -106,7 +106,7 @@ public class Vehicule {
         return _departement;
     }
 
-    public float get_prix() {
+    public int get_prix() {
         return _prix;
     }
 
@@ -162,7 +162,7 @@ public class Vehicule {
         this._departement = _departement;
     }
 
-    public void set_prix(float _prix) {
+    public void set_prix(int _prix) {
         this._prix = _prix;
     }
 

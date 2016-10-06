@@ -1,5 +1,6 @@
 package com.esgi.handiwe.BLL;
 
+
 import android.util.Log;
 
 import com.esgi.handiwe.DAL.ApiService;
@@ -38,6 +39,7 @@ public abstract class VehiculeManager {
         ApiService apiService = retrofit.create(ApiService.class);
 
         Call<ArrayList<Vehicule>> call = apiService.listVehicule();
+
         Log.d("CALL", "Test 1");
         call.enqueue(new Callback<ArrayList<Vehicule>>(){
             @Override
@@ -53,6 +55,7 @@ public abstract class VehiculeManager {
                 setAllVehicule(vehicules, statusCode);
 
                 onFinish();
+
             }
 
             @Override
@@ -85,10 +88,13 @@ public abstract class VehiculeManager {
         return listVehicule;
     }
 
-    public void setVehiculeReserve(int id){
-        // listVehicule.
+    public void setVehiculeReserve(int id) {
+        for (Vehicule item : listVehicule) {
+            if (item.get_id() == id) {
+                item.setReserve(true);
+            }
+        }
+        apiSetVehiculeReserve(id);
     }
-
-
     public abstract void onFinish();
 }
