@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <ImageView
+        app:srcCompat="@android:drawable/dialog_holo_dark_frame"
+        android:id="@+id/imgRow"
+        android:layout_height="120dp"
+        android:layout_width="110dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/marque"
+            android:textColor="@android:color/black"
+            android:text="MARQUE MODELE ANNEE" />
+
+        <TextView
+            android:id="@+id/dept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="DEPARTEMENT"/>
+
+        <TextView
+            android:text="PLACES ASSISES / PLACES FAUTEUILS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:id="@+id/places" />
+
+        <TextView
+            android:text="PRIX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:id="@+id/prix" />
+
+        <Button
+            android:text="Réserver"
+            android:layout_width="match_parent"
+            android:id="@+id/reserve"
+            android:layout_height="wrap_content"
+            android:gravity="top|center_horizontal" />
+    </LinearLayout>
+
+</LinearLayout>

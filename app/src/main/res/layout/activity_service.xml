@@ -10,4 +10,69 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.esgi.handiwe.View.ServiceActivity">
 
+    <TextView
+        android:text="Location de véhicules"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:text="Nombre de places assises"
+            android:layout_width="105dp"
+            android:id="@+id/textView4"
+            android:gravity="center_horizontal|center"
+            android:layout_height="35dp" />
+
+        <EditText
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText3"
+            android:layout_weight="1"
+            android:layout_width="75dp"
+            android:gravity="center_horizontal|center"
+            android:layout_height="35dp" />
+
+        <TextView
+            android:text="Nombre de places pour fauteuils"
+            android:layout_width="116dp"
+            android:id="@+id/textView3"
+            android:gravity="center_horizontal|center"
+            android:layout_height="35dp" />
+
+        <EditText
+            android:layout_width="75dp"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText4"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center"
+            android:layout_height="35dp" />
+
+        <Button
+            android:text="+"
+            android:id="@+id/button"
+            android:textAppearance="@android:color/holo_orange_dark"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listCars"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="100dp" />
 </RelativeLayout>
