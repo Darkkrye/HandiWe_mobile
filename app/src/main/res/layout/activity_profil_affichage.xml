@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_profil_affichage"
     android:layout_width="match_parent"
@@ -10,22 +12,156 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.esgi.handiwe.View.ProfilAffichageActivity">
 
+    <TextView
+        android:text="Profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewProfil"
+        android:textAppearance="@android:style/TextAppearance.Material"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textStyle="normal|bold" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:id="@+id/LinearLayoutNom"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/textViewProfil"
+        android:layout_alignParentEnd="true"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@drawable/sport"
+            android:id="@+id/imageView3"
+            android:layout_weight="0.07"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_weight="0.07"
+        android:layout_below="@id/LinearLayoutNom"
+        android:id="@+id/LinearLayoutInfo"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:text="Profil"
+            android:text="Nom : "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewNom"
+            android:textSize="18sp"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="Prenom :"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPrenom"
+            android:textSize="18sp"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="Date de naissance : "
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
-            android:textAppearance="@android:style/TextAppearance.Material"
-            android:textSize="24sp"
-            android:textAlignment="center"
+            android:textStyle="normal|bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="Adresse :"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:textSize="18sp"
             android:textStyle="normal|bold" />
 
+        <TextView
+            android:text="Ville : "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView7"
+            android:textStyle="normal|bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="Code postale :"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:textStyle="normal|bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="Telephone :"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:textStyle="normal|bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="Type d'handicap : "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:textStyle="normal|bold"
+            android:textSize="18sp" />
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/LinearLayoutSport"
+        android:layout_below="@id/LinearLayoutInfo">
+
+        <TextView
+            android:text="Sport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView15"
+            android:textAppearance="@android:style/TextAppearance.Material"
+            android:textAlignment="center"
+            android:textStyle="normal|bold"
+            android:textSize="24sp" />
+
+        <TextView
+            android:text="Nom du sport : "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView16"
+            android:textSize="18sp"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="Fréquence : "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView17"
+            android:textStyle="normal|bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="Lieux préféré : "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView18"
+            android:textStyle="normal|bold"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <Button
+        android:text="Modifier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonModifier"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="19dp" />
+
 </RelativeLayout>
