@@ -6,8 +6,6 @@ import java.util.Date;
  * Created by Pico on 05/10/2016.
  */
 
-import com.google.gson.annotations.SerializedName;
-
 public class Utilisateur {
 
     private int     _id;
@@ -20,6 +18,7 @@ public class Utilisateur {
     private String  _mail;
     private String  _telephone;
     private String  _moteDePasse;
+    private String  _licence;
     private String  _image;
     private boolean isPrivate;
 
@@ -73,6 +72,9 @@ public class Utilisateur {
         return _moteDePasse;
     }
 
+    public String get_licence() {
+        return _licence;
+    }
 
     public String get_image() {
         return _image;
@@ -128,6 +130,10 @@ public class Utilisateur {
         this._moteDePasse = moteDePasse;
     }
 
+    public void set_licence(String licence) {
+        this._licence = licence;
+    }
+
     public void set_image(String image) {
         this._image = image;
     }
@@ -135,7 +141,4 @@ public class Utilisateur {
     public void setPrivate(boolean aPrivate) {
         isPrivate = aPrivate;
     }
-
-
-    //endregion
 }
