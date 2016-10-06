@@ -8,24 +8,27 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by Pico on 06/10/2016.
  */
 
-public class TypeHandicapDBHandler extends SQLiteOpenHelper {
+public class LieuxSportDBHandler extends SQLiteOpenHelper {
 
 
     private static int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "database.db";
-    private static final String DATABASE_TABLE = "PROFIL";
+    private static final String DATABASE_TABLE = "LIEUX_SPORT";
 
-    private static final String KEY_ID = "ID_PROFIL";
-    private static final String KEY_LIBELLE = "LIBELLE";
+    private static final String KEY_ID = "ID_LIEUX_SPORT";
+    private static final String KEY_LIEUX = "ID_LIEUX";
+    private static final String KEY_SPORT = "ID_SPORT";
+
 
 
 
     private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +DATABASE_TABLE+" ("
             + KEY_ID+" INTEGER PRIMARY KEY, "
-            + KEY_LIBELLE+" TEXT)";
+            + KEY_LIEUX+" INTEGER, "
+            + KEY_SPORT+" INTEGER° ";
 
 
-    public TypeHandicapDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public LieuxSportDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
@@ -45,8 +48,6 @@ public class TypeHandicapDBHandler extends SQLiteOpenHelper {
         DATABASE_VERSION = newVersion;
         onCreate(sqLiteDatabase);
     }
-
-
 
 
 }
