@@ -2,6 +2,7 @@ package com.esgi.handiwe.BLL;
 
 import com.esgi.handiwe.DAL.ApiService;
 import com.esgi.handiwe.Model.Conversation;
+import com.esgi.handiwe.Model.Message;
 
 import java.util.ArrayList;
 
@@ -17,11 +18,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MessageManager {
 
-    private ArrayList<Conversation> listConversation;
+    private ArrayList<Message> listMessage=new ArrayList<Message>();
+
+    public MessageManager(Conversation conversation){
+        apiSetAllMessage(conversation.get_idUtilisateur1(), conversation.get_idUtilisateur2());
+    }
 
     //region API
-    public void apiSetAllconversation() {
-        ArrayList<Conversation> listConversation = new ArrayList<Conversation>();
+    public void apiSetAllMessage(int idA,int idB){
+        ArrayList<Message> listMessage = new ArrayList<Message>();
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiService.ENDPOINT)
@@ -30,18 +36,18 @@ public class MessageManager {
 
         ApiService apiService = retrofit.create(ApiService.class);
 
-        Call<ArrayList<Conversation>> call = apiService.listConversation();
-        call.enqueue(new Callback<ArrayList<Conversation>>(){
+        Call<ArrayList<Message>> call = apiService.getMessageByBothUser(Integer.toString(idA),Integer.toString(idB));
+        call.enqueue(new Callback<ArrayList<Message>>(){
             @Override
-            public void onResponse(Call<ArrayList<Conversation>> call, Response<ArrayList<Conversation>> response) {
+            public void onResponse(Call<ArrayList<Message>> call, Response<ArrayList<Message>> response) {
                 int statusCode = response.code();
-                ArrayList<Conversation> conversations = response.body();
-                setAllConversation(conversations, statusCode);
+                ArrayList<Message> messages = response.body();
+                setAllMessage(messages, statusCode);
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Conversation>> call, Throwable throwable) {
-                setAllConversation(new ArrayList<Conversation>(), 0);
+            public void onFailure(Call<ArrayList<Message>> call, Throwable throwable) {
+                setAllMessage(new ArrayList<Message>(), 0);
             }
 
 
@@ -50,12 +56,12 @@ public class MessageManager {
 
     //endregion
 
-    public void setAllConversation(ArrayList<Conversation> list, int statusCode){
-        listConversation = list;
+    public void setAllMessage(ArrayList<Message> list, int statusCode){
+        listMessage = list;
     }
 
-    public ArrayList<Conversation> getListConversation() {
-        return listConversation;
+    public ArrayList<Message> getListMessage() {
+        return listMessage;
     }
 
 }

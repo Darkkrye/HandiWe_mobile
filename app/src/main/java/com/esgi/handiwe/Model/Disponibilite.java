@@ -10,9 +10,16 @@ import com.google.gson.annotations.SerializedName;
 
 public class Disponibilite {
 
+    @SerializedName("idAVAILABILITY")
     private int     _id;
+
+    @SerializedName("idUSER")
     private int     _idUtilisateur;
+
+    @SerializedName("idSPORT")
     private int     _idSport;
+
+    //@SerializedName("")
     private Jours   _jours;
 
     public Disponibilite(int _id, int _idUtilisateur, int _idSport, Jours _jours) {

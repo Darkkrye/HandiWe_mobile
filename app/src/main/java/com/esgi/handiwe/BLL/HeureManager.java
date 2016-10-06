@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HeureManager {
 
     private ArrayList<Conversation> listConversation;
-
+/**
     //region API
     public void apiSetAllconversation() {
         ArrayList<Conversation> listConversation = new ArrayList<Conversation>();
@@ -57,5 +57,5 @@ public class HeureManager {
     public ArrayList<Conversation> getListConversation() {
         return listConversation;
     }
-
+**/
 }

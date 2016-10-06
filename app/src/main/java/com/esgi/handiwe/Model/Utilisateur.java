@@ -37,13 +37,13 @@ public class Utilisateur {
     @SerializedName("telephone")
     private String  _telephone;
 
-    @SerializedName("")
+    @SerializedName("pass_word")
     private String  _moteDePasse;
 
-    @SerializedName("")
+    @SerializedName("image")
     private String  _image;
 
-    @SerializedName("")
+    @SerializedName("isProtected")
     private boolean isPrivate;
 
 

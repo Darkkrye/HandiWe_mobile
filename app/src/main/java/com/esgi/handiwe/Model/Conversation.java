@@ -21,6 +21,7 @@ public class Conversation {
         this._idUtilisateur2 = _idUtilisateur2;
     }
 
+    public Conversation(){}
 
     //region GETTER
 

@@ -12,11 +12,14 @@ import com.esgi.handiwe.Model.Message;
 import com.esgi.handiwe.Model.Profil;
 import com.esgi.handiwe.Model.Sport;
 import com.esgi.handiwe.Model.TypeHandicap;
+import com.esgi.handiwe.Model.UserSport;
 import com.esgi.handiwe.Model.Utilisateur;
 import com.esgi.handiwe.Model.Vehicule;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.PUT;
 import retrofit2.Call;
@@ -56,15 +59,34 @@ public interface ApiService {
     Call<Utilisateur> getLieuxById(@Path("id") int id);
 
     @GET("/places/name/{name}")
-    Call<ArrayList<Conversation>> getLieuxByName(@Path("name") String name);
+    Call<ArrayList<Lieux>> getLieuxByName(@Path("name") String name);
 
     @GET("/conversations/{idUser}")
-    Call<ArrayList<Message>> getConversationById(@Path("idUser") int id);
+    Call<ArrayList<Conversation>> getConversationById(@Path("idUser") int id);
 
     @GET("/messages/{idUserA}/{idUserB}")
-    Call<Utilisateur> getMessageByBothUser(@Path("idUserA") String idA,@Path("idUserB") String idB);
+    Call<ArrayList<Message>> getMessageByBothUser(@Path("idUserA") String idA,@Path("idUserB") String idB);
+
+    @GET("/sports")
+    Call<ArrayList<Sport>> getAllSport();
+
+     @GET("/users/by/sport")
+     Call<ArrayList<UserSport>> getListUserBySport();
+
+    @GET("/organize/{idUser}")
+     Call<ArrayList<Disponibilite>> getListDisponibilite(@Path("idUser") int idUser);
+
+
+
+
+
     /**
      *
+     *
+     * sports - GET
+     /sports/:id - GET
+     /sports/name/:name - GET
+
 
      */
 

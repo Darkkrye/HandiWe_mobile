@@ -8,17 +8,30 @@ import com.google.gson.annotations.SerializedName;
 
 public class Lieux {
 
+    @SerializedName("idPLACE")
     private int _id;
+    @SerializedName("name")
     private String  _nom;
+    @SerializedName("type")
     private String  _type;
+    @SerializedName("address")
     private String  _adresse;
+    @SerializedName("zipCode")
     private String  _codePostal;
+    @SerializedName("city")
     private String  _ville;
+    @SerializedName("mail")
     private String  _mail;
+    @SerializedName("telephone")
     private String  _telephone;
+    @SerializedName("accountantName")
     private String  _responsable;
+    @SerializedName("hasMaterial")
     private boolean hasMateriel;
+    @SerializedName("hasFreeAccess")
     private boolean hasFreeAccess;
+
+    public Lieux(){}
 
     public Lieux(int _id, String _nom, String _type, String _adresse, String _codePostal, String _ville, String _mail, String _telephone, String _responsable, boolean hasMateriel, boolean hasFreeAccess) {
         this._id = _id;
