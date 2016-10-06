@@ -5,10 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.esgi.handiwe.DAL.ApiService;
 import com.esgi.handiwe.Model.Conversation;
-import com.esgi.handiwe.Model.Utilisateur;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,7 +20,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ConversationManager {
 
-    private ArrayList<Conversation> listConversation;
+    private ArrayList<Conversation> listConversation = new ArrayList<Conversation>();
+
+    public ConversationManager(int id) {
+        apiGetAllconversation(id);
+    }
 
     //region API
     public void apiGetAllconversation(int id) {
@@ -56,13 +58,33 @@ public class ConversationManager {
     //endregion
 
     public void setAllConversation(ArrayList<Conversation> list, int statusCode){
-        listConversation = list;
+        boolean exist=false;
+        for (Conversation newConversation:list) {
+            for (Conversation item : listConversation) {
+                if (item.get_id() == newConversation.get_id()) {
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                listConversation.add(newConversation);
+            }
+            exist = false;
+        }
     }
 
     public ArrayList<Conversation> getListConversation() {
         return listConversation;
     }
 
+    public Conversation getConversationById(int id){
+        Conversation conversation = new Conversation();
+        for (Conversation item:listConversation) {
+            if (item.get_id() == id) {
+                conversation = item;
+            }
+        }
+        return conversation;
+    }
 
 
 }
