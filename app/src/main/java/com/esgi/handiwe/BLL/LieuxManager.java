@@ -1,7 +1,7 @@
 package com.esgi.handiwe.BLL;
 
 import com.esgi.handiwe.DAL.ApiService;
-import com.esgi.handiwe.Model.Conversation;
+import com.esgi.handiwe.Model.Lieux;
 
 import java.util.ArrayList;
 
@@ -17,11 +17,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LieuxManager {
 
-    private ArrayList<Conversation> listConversation;
+    private ArrayList<Lieux> listLieux;
 
     //region API
-    public void apiSetAllconversation() {
-        ArrayList<Conversation> listConversation = new ArrayList<Conversation>();
+    public void apiGetAllLieux() {
+        ArrayList<Lieux> listlieux = new ArrayList<Lieux>();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiService.ENDPOINT)
@@ -30,32 +30,57 @@ public class LieuxManager {
 
         ApiService apiService = retrofit.create(ApiService.class);
 
-        Call<ArrayList<Conversation>> call = apiService.listConversation();
-        call.enqueue(new Callback<ArrayList<Conversation>>(){
+        Call<ArrayList<Lieux>> call = apiService.listLieux();
+        call.enqueue(new Callback<ArrayList<Lieux>>(){
             @Override
-            public void onResponse(Call<ArrayList<Conversation>> call, Response<ArrayList<Conversation>> response) {
+            public void onResponse(Call<ArrayList<Lieux>> call, Response<ArrayList<Lieux>> response) {
                 int statusCode = response.code();
-                ArrayList<Conversation> conversations = response.body();
-                setAllConversation(conversations, statusCode);
+                ArrayList<Lieux> lieux = response.body();
+                setAllLieux(lieux, statusCode);
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Conversation>> call, Throwable throwable) {
-                setAllConversation(new ArrayList<Conversation>(), 0);
+            public void onFailure(Call<ArrayList<Lieux>> call, Throwable throwable) {
+                setAllLieux(new ArrayList<Lieux>(), 0);
             }
 
 
         });
     }
 
+
     //endregion
 
-    public void setAllConversation(ArrayList<Conversation> list, int statusCode){
-        listConversation = list;
+    public void setAllLieux(ArrayList<Lieux> list, int statusCode){
+        listLieux = list;
+
+        boolean exist=false;
+        for (Lieux newLieux:list) {
+            for (Lieux item : listLieux) {
+                if (item.get_id() == newLieux.get_id()) {
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                listLieux.add(newLieux);
+            }
+            exist = false;
+        }
     }
 
-    public ArrayList<Conversation> getListConversation() {
-        return listConversation;
+    public ArrayList<Lieux> getListLieux() {
+        return listLieux;
+    }
+
+
+    public Lieux getLieuxById(int id){
+        Lieux lieu = new Lieux();
+        for (Lieux item:listLieux) {
+            if (item.get_id() == id) {
+                lieu = item;
+            }
+        }
+        return lieu;
     }
 
 }

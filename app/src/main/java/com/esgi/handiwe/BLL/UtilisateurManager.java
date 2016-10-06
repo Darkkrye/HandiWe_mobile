@@ -24,7 +24,7 @@ public class UtilisateurManager {
         apiGetAllUtilisateur();
     }
     public UtilisateurManager(String mail, String mdp){
-        apiGetAllUtiligetUtilisateurByMailPassword();
+        apiGetAllUtiligetUtilisateurByMailPassword(mail, mdp);
     }
 
 
@@ -57,7 +57,7 @@ public class UtilisateurManager {
         });
     }
 
-    public void getUtilisateurByMailPassword(String mail, String password){
+    public void apiGetAllUtiligetUtilisateurByMailPassword(String mail, String password){
         Utilisateur utilisateur = new Utilisateur();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -116,14 +116,13 @@ public class UtilisateurManager {
     }
 
     public Utilisateur getUtilisateurById(int id){
-        Utilisateur user;
+        Utilisateur user = new Utilisateur();
         for (Utilisateur item:listUtiliasteur) {
             if (item.get_id() == id) {
                 user = item;
             }
         }
+        return user;
     }
 
-
-    }
 }

@@ -33,7 +33,7 @@ public interface ApiService {
     Call<ArrayList<Utilisateur>> listUtilisateur();
 
     @GET("/users/{id}")
-    Call<Utilisateur> getUtilisateurById(@Path("id") int id,);
+    Call<Utilisateur> getUtilisateurById(@Path("id") int id);
 
     @GET("/users/mail/{mail}/{password}")
     Call<Utilisateur> getUtilisateurByMailPassword(
@@ -46,22 +46,26 @@ public interface ApiService {
     void setVehiculeReserve(@Path("id") int id);
 
 
+    @GET("/places")
+    Call<ArrayList<Lieux>> listLieux();
+
+    @GET("/places/{id}")
+    Call<Utilisateur> getLieuxById(@Path("id") int id);
+
+    @GET("/places/name/{name}")
+    Call<Utilisateur> getUtilisateurByMailPassword(@Path("name") String name);
+
+    /**
+     *
+
+
+     */
+
     @GET("/conversations")
     Call<ArrayList<Conversation>> listConversation();
 
     @GET("/disponibilite")
     Call<ArrayList<Disponibilite>> listDisponibilite();
-
-
-    /**
-     *
-     * /users
-     /users/:id
-     /users/mail/:mail/:password
-
-
-     */
-
 
 
 
