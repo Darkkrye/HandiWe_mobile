@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,10 +12,16 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.TextView;
 
+import com.esgi.handiwe.BLL.SportManager;
+import com.esgi.handiwe.BLL.UtilisateurSportManager;
+import com.esgi.handiwe.Model.Sport;
+import com.esgi.handiwe.Model.Utilisateur;
+import com.esgi.handiwe.Outils.VariableGlobal;
 import com.esgi.handiwe.R;
 
 import java.util.ArrayList;
@@ -23,27 +30,48 @@ import java.util.List;
 
 public class ListePersonneActivity extends AppCompatActivity implements OnItemSelectedListener, View.OnClickListener {
 
+
+
     private Spinner spinner;
     private EditText villeET;
     private TextView dateTV;
     private CheckBox matinCH, apresMidiCH;
+    private ListView lvUtilisateur;
     ImageButton imageButtonCal, imageButtonSearch;
     static final int DATE_PICKER_ID = 1111;
     private int year;
     private int month;
     private int day;
+    private SportManager sport;
+    private  VariableGlobal vg;
+    private UtilisateurSportManager usm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sport = new SportManager() {
+            @Override
+            public void onFinish() {
+                List<String> categories = new ArrayList<String>();
+                Log.d("on finish", sport.toString());
+                for (Sport s:sport.getListSport()) {
+                    Log.d("sport", s.get_nom());
+                    categories.add(s.get_nom());
+                }
+                setSpinner();
+            }
+        };
+        vg = (VariableGlobal) getApplicationContext();
+         usm = vg.getUtilisateurSportManager();
+        Log.d("test", sport.getListSport().toString());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_personne);
 
-        setSpinner();
 
         villeET = (EditText)findViewById(R.id.editTextVille);
         dateTV = (TextView)findViewById(R.id.textViewDate);
         matinCH = (CheckBox)findViewById(R.id.checkBoxMatin);
         apresMidiCH = (CheckBox)findViewById(R.id.checkBoxApreMidi);
+        lvUtilisateur = (ListView)findViewById(R.id.ListViewUtilisateurSport);
 
         // init imageButton
         imageButtonCal = (ImageButton) findViewById(R.id.ibCal);
@@ -72,13 +100,15 @@ public class ListePersonneActivity extends AppCompatActivity implements OnItemSe
         spinner.setOnItemSelectedListener(this);
 
         // Spinner Drop down elements
+
+
+
+
         List<String> categories = new ArrayList<String>();
-        categories.add("Automobile");
-        categories.add("Business Services");
-        categories.add("Computers");
-        categories.add("Education");
-        categories.add("Personal");
-        categories.add("Travel");
+        for (Sport s:sport.getListSport()) {
+            categories.add(s.get_nom());
+        }
+
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
@@ -94,6 +124,21 @@ public class ListePersonneActivity extends AppCompatActivity implements OnItemSe
     public void onClick(View v) {
         if (v == imageButtonCal) {
             showDialog(DATE_PICKER_ID);
+        }else if(v == imageButtonSearch){
+            String name = (String)spinner.getSelectedItem();
+            Sport s = new Sport(0,"", "");
+            for (Sport item : sport.getListSport()){
+                if(item.get_nom().equals(name)){
+                    s= item;
+                }
+            }
+            ArrayList<Utilisateur> listUser = usm.getUtilisateurBySport(s.get_id());
+            Log.d("imageButtonSearch", "list "+listUser.toString());
+            Utilisateur[] users = new Utilisateur[listUser.size()];
+            for(int i = 0; i < listUser.size(); i++)
+                users[i] = listUser.get(i);
+            lvUtilisateur.setAdapter(new AdapterListePersonne(getApplication(), users));
+
         }
     }
 
@@ -138,4 +183,6 @@ public class ListePersonneActivity extends AppCompatActivity implements OnItemSe
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
 }
