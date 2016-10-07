@@ -1,7 +1,10 @@
 package com.esgi.handiwe.BLL;
 
+import android.util.Log;
+
 import com.esgi.handiwe.DAL.ApiService;
 import com.esgi.handiwe.Model.Utilisateur;
+import com.esgi.handiwe.View.ConnexionActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +77,10 @@ public class UtilisateurManager {
                  int statusCode = response.code();
                  Utilisateur utilisateur = response.body();
                  setUtilisateur(utilisateur, statusCode);
+
+                 if(utilisateur != null){
+                     ConnexionActivity.testFunction(utilisateur);
+                 }
              }
 
              @Override
@@ -85,14 +92,14 @@ public class UtilisateurManager {
     }
     //endregion
 
-
-
     public void setUtilisateur(Utilisateur user, int statusCode){
         if(listUtiliasteur == null) {
             listUtiliasteur = new ArrayList<Utilisateur>();
         }
         listUtiliasteur.add(user);
     }
+
+
 
 
     public void setAllUtilisateur(ArrayList<Utilisateur> list, int statusCode){
