@@ -15,6 +15,7 @@ public class VariableGlobal extends Application {
     UtilisateurSportManager utilisateurSportManager = null;
     ConversationMessageManager conversationMessageManager = null;
     DisponibiliteHeureManager disponibiliteHeureManager = null;
+    int idUser =null;
 
 
     public UtilisateurSportManager getUtilisateurSportManager() {
@@ -33,7 +34,7 @@ public class VariableGlobal extends Application {
     public ConversationMessageManager getConversationMessageManager() {
 
         if (conversationMessageManager == null) {
-            conversationMessageManager = new ConversationMessageManager();
+            conversationMessageManager = new ConversationMessageManager(idUser);
         }
         return conversationMessageManager;
     }
@@ -45,7 +46,7 @@ public class VariableGlobal extends Application {
      public DisponibiliteHeureManager getDisponibiliteHeureManager() {
 
         if (disponibiliteHeureManager == null) {
-            disponibiliteHeureManager = new DisponibiliteHeureManager();
+            disponibiliteHeureManager = new DisponibiliteHeureManager(idUser);
         }
         return disponibiliteHeureManager;
     }
@@ -54,6 +55,14 @@ public class VariableGlobal extends Application {
         this.disponibiliteHeureManager = disponibiliteHeureManager;
     }
 
+    public int getIdUser{
+        return idUser;
+    }
 
+    public void setIdUser(int id){
+        idUser = id;
+
+
+    }
 
 }
