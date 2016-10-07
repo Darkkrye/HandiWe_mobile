@@ -10,4 +10,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.esgi.handiwe.View.MessagerieActivity">
 
+    <Button
+        android:text="+"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/NewMessage" />
+
+    <ListView
+        android:id="@+id/listConv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp" />
 </RelativeLayout>

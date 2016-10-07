@@ -1,5 +1,7 @@
 package com.esgi.handiwe.BLL;
 
+import android.util.Log;
+
 import com.esgi.handiwe.DAL.ApiService;
 import com.esgi.handiwe.Model.Conversation;
 import com.esgi.handiwe.Model.Vehicule;
@@ -16,11 +18,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Pico on 06/10/2016.
  */
 
-public class VehiculeManager {
+public abstract class VehiculeManager {
 
     private ArrayList<Vehicule> listVehicule;
 
-    public VehiculeManager(ArrayList<Vehicule> listVehicule) {
+    public VehiculeManager() {
         apiGetAllVehicule();
     }
 
@@ -43,6 +45,8 @@ public class VehiculeManager {
                 int statusCode = response.code();
                 ArrayList<Vehicule> vehicules = response.body();
                 setAllVehicule(vehicules, statusCode);
+
+                onFinish();
             }
 
             @Override
@@ -55,22 +59,22 @@ public class VehiculeManager {
     }
 
     public void apiSetVehiculeReserve(int id) {
-        Log.d("TEST", "IN SET RESERVE");
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiService.ENDPOINT)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        Log.d("TEST", "IN SET RESERVE");
 
         ApiService apiService = retrofit.create(ApiService.class);
-        Log.d("TEST", "IN SET RESERVE");
+
+        Log.d("TEST", "ID CAR : " + id);
 
         Call<Integer> idCar = apiService.setVehiculeReserve(id);
         idCar.enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
-
-                Log.d("TEST", "Response is "+response);
+                Log.d("TEST", response.code() + " " + response.message());
+                Log.d("TEST", "Delete car id : "+response);
             }
 
             @Override
@@ -78,8 +82,6 @@ public class VehiculeManager {
 
             }
         });
-        Log.d("TEST", "IN SET RESERVE");
-
     }
     //endregion
 
@@ -99,5 +101,7 @@ public class VehiculeManager {
         }
         apiSetVehiculeReserve(id);
     }
+
+    public abstract void onFinish();
 
 }

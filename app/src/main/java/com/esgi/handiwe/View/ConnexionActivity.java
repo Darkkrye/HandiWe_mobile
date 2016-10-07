@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.esgi.handiwe.BLL.UtilisateurManager;
+import com.esgi.handiwe.BLL.UtilisateurSportManager;
 import com.esgi.handiwe.Model.Utilisateur;
 import com.esgi.handiwe.R;
 
@@ -16,7 +16,7 @@ public class ConnexionActivity extends AppCompatActivity implements View.OnClick
 
     EditText emailET, motPasseET;
     ImageButton connexionIB, inscriptionIB;
-    UtilisateurManager utilisateurManager;
+    UtilisateurSportManager utilisateurManager;
     String email, mdp;
 
     @Override
@@ -42,7 +42,7 @@ public class ConnexionActivity extends AppCompatActivity implements View.OnClick
             email = emailET.getText().toString();
             mdp = motPasseET.getText().toString();
 
-            utilisateurManager = new UtilisateurManager(email,mdp);
+            utilisateurManager = new UtilisateurSportManager(email,mdp);
         }
     }
 

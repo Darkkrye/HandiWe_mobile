@@ -2,6 +2,7 @@ package com.esgi.handiwe.BLL;
 
 
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.esgi.handiwe.DAL.ApiService;
 import com.esgi.handiwe.Model.Conversation;
@@ -19,12 +20,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Pico on 05/10/2016.
  */
 
-public class ConversationMessageManager {
+public abstract class ConversationMessageManager {
 
     private ArrayList<Conversation> listConversation = new ArrayList<Conversation>();
     private ArrayList<Message> listMessage=new ArrayList<Message>();
 
     public ConversationMessageManager(int idUser) {
+        Log.d("Test", "USER : " + idUser);
         apiGetAllconversation(idUser);
         for (Conversation item : listConversation) {
             apiGetAllMessage(item.get_idUtilisateur1(), item.get_idUtilisateur2());
@@ -33,6 +35,7 @@ public class ConversationMessageManager {
 
     //region API
     public void apiGetAllconversation(int id) {
+        Log.d("Test", "Start Get All Conv");
         ArrayList<Conversation> listConversation = new ArrayList<Conversation>();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -46,18 +49,23 @@ public class ConversationMessageManager {
         call.enqueue(new Callback<ArrayList<Conversation>>(){
             @Override
             public void onResponse(Call<ArrayList<Conversation>> call, Response<ArrayList<Conversation>> response) {
+                Log.d("TEST", "AAAAAAAHHHHHHHHH");
                 int statusCode = response.code();
                 ArrayList<Conversation> conversations = response.body();
                 setAllConversation(conversations, statusCode);
+
+                onFinish();
             }
 
             @Override
             public void onFailure(Call<ArrayList<Conversation>> call, Throwable throwable) {
+                Log.d("TEST", "BEEEEEEEEEE");
                 setAllConversation(new ArrayList<Conversation>(), 0);
             }
 
 
         });
+        Log.d("Test", "End Get All Conv");
     }
 
     public void apiGetAllMessage(int idA,int idB){
@@ -90,8 +98,10 @@ public class ConversationMessageManager {
     //endregion
 
     public void setAllConversation(ArrayList<Conversation> list, int statusCode){
+        listConversation = list;
+        /*
         boolean exist=false;
-        for (Conversation newConversation:list) {
+        for (Conversation newConversation : list) {
             for (Conversation item : listConversation) {
                 if (item.get_id() == newConversation.get_id()) {
                     exist = true;
@@ -102,6 +112,7 @@ public class ConversationMessageManager {
             }
             exist = false;
         }
+        */
     }
 
     public ArrayList<Conversation> getListConversation() {
@@ -132,4 +143,5 @@ public class ConversationMessageManager {
         return getConversationById(mes.get_idConversation());
     }
 
+    public abstract void onFinish();
 }
