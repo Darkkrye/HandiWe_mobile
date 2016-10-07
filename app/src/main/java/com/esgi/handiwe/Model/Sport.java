@@ -8,8 +8,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class Sport {
 
+    @SerializedName("idSPORT")
     private int     _id;
+    @SerializedName("name")
     private String  _nom;
+    @SerializedName("image")
     private String  _image;
 
     public Sport(int _id, String _nom, String _image) {

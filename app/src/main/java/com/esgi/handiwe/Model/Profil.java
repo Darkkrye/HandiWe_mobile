@@ -25,7 +25,7 @@ public class Profil {
     private String  _nomClub;
     private String  _licence;
     //en à enlever
-    
+
     public Profil() {
         this.listDisponibilite = new ArrayList<Integer>();
     }
