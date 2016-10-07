@@ -50,7 +50,8 @@ public interface ApiService {
     Call<ArrayList<TypeHandicap>> listHandicap();
 
     @PUT("/cars/reserve/{id}")
-    void setVehiculeReserve(@Path("id") int id);
+    Call<Integer> setVehiculeReserve(@Path("id") int id);
+    //void setVehiculeReserve(@Path("id") int id);
 
 
     @GET("/places")

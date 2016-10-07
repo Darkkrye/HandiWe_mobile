@@ -68,14 +68,30 @@ public abstract class VehiculeManager {
     }
 
     public void apiSetVehiculeReserve(int id) {
+        Log.d("TEST", "IN SET RESERVE");
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiService.ENDPOINT)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        Log.d("TEST", "IN SET RESERVE");
 
         ApiService apiService = retrofit.create(ApiService.class);
+        Log.d("TEST", "IN SET RESERVE");
 
-        apiService.setVehiculeReserve(id);
+        Call<Integer> idCar = apiService.setVehiculeReserve(id);
+        idCar.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+
+                Log.d("TEST", "Response is "+response);
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+        Log.d("TEST", "IN SET RESERVE");
 
     }
     //endregion

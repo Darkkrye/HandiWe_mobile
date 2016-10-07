@@ -47,7 +47,7 @@ public class ServiceActivity extends AppCompatActivity {
                 Vehicule[] vehi = new Vehicule[getListVehicule().size()];
                 for(int i = 0; i < getListVehicule().size(); i++)
                     vehi[i] = getListVehicule().get(i);
-                listCars.setAdapter(new RowItemAdapter(getApplication(), vehi));
+                listCars.setAdapter(new RowItemAdapter(getApplication(), vehi, this));
                 Log.d("TEST", getListVehicule().size()+"");
             }
         };
