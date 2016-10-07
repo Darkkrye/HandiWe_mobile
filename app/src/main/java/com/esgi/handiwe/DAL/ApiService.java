@@ -1,12 +1,13 @@
 package com.esgi.handiwe.DAL;
 
 /**
- * Created by nico on 06/10/2016.
+ * Created by Pico on 06/10/2016.
  */
 
 import com.esgi.handiwe.Model.Conversation;
 import com.esgi.handiwe.Model.Disponibilite;
 import com.esgi.handiwe.Model.Heure;
+import com.esgi.handiwe.Model.HoureDispo;
 import com.esgi.handiwe.Model.Lieux;
 import com.esgi.handiwe.Model.Message;
 import com.esgi.handiwe.Model.Profil;
@@ -34,7 +35,6 @@ public interface ApiService {
 
     @GET("/users")
     Call<ArrayList<Utilisateur>> listUtilisateur();
-
 
     @GET("/users/{id}")
     Call<Utilisateur> getUtilisateurById(@Path("id") int id);
@@ -72,11 +72,19 @@ public interface ApiService {
     @GET("/sports")
     Call<ArrayList<Sport>> getAllSport();
 
-     @GET("/users/by/sport")
-     Call<ArrayList<UserSport>> getListUserBySport();
+    @GET("/users/by/sport")
+    Call<ArrayList<UserSport>> getListUserBySport();
 
     @GET("/organize/{idUser}")
      Call<ArrayList<Disponibilite>> getListDisponibilite(@Path("idUser") int idUser);
+
+    @GET("/hours/from/{idAvailability}")
+    Call<ArrayList<HoureDispo>> getListHourDispo(@Path("idAvailability") int idConversation);
+
+    @GET("/hours/{idHour}")
+    Call<ArrayList<Heure>> getListHour(@Path("idHour") int idHeure);
+
+
 
     /**
      *
@@ -87,4 +95,11 @@ public interface ApiService {
 
 
      */
+
+
+
+
+
+
+
 }

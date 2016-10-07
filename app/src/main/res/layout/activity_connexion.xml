@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +15,9 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textAlignment="center">
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:layout_width="200dp"
@@ -25,65 +28,68 @@
             android:background="@mipmap/logo_handiwe" />
 
         <TextView
-            android:text="SLOGAN"
+            android:text="Laissez vos préjugés aux vestiaires !"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
-            android:textAlignment="center"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:ems="10"
-            android:id="@+id/editText"
-            android:text="EMAIL" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/editText2" />
+            android:textAppearance="@android:style/TextAppearance.Material"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"/>
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentStart="true"
+            android:weightSum="1">
 
-            <Button
-                android:text="Connexion"
-                android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/button4"
-                android:layout_weight="1" />
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:textAlignment="center"
+                android:hint="e-mail"
+                android:id="@+id/editTextEmail" />
 
-            <Button
-                android:text="Inscription"
-                android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/button5"
-                android:layout_weight="1" />
-        </LinearLayout>
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/editTextMotPasse"
+                android:hint="mot de passe"
+                android:textAlignment="center" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:weightSum="1"
+                android:layout_marginTop="20dp"
+                >
 
-            <Button
-                android:text="FB"
-                android:layout_width="15dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/button6"
-                android:layout_weight="1" />
+                <ImageButton
+                    android:layout_width="175dp"
+                    app:srcCompat="@drawable/connexion"
+                    android:id="@+id/imageButtonConnexion"
+                    android:background="@null"
+                    android:layout_height="130dp" />
 
-            <Button
-                android:text="GMAIL"
-                android:layout_width="15dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/button7"
-                android:layout_weight="1" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="130dp"
+                    app:srcCompat="@drawable/rsz_inscription"
+                    android:id="@+id/imageButtonInscription"
+                    android:background="@null" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

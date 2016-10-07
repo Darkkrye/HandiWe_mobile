@@ -6,11 +6,21 @@ package com.esgi.handiwe.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class Message {
 
+    @SerializedName("idMESSAGE")
     private int     _id;
+    @SerializedName("")
     private int     _idConversation;
+    @SerializedName("message")
     private String  _contenu;
+    @SerializedName("sendDate")
+    private Date    _sendDate;
+    @SerializedName("FromCreator")
+    private boolean _fromCreator;
+
 
     public Message() { }
 
@@ -39,6 +49,13 @@ public class Message {
         return _contenu;
     }
 
+    public Date get_sendDate() {
+        return _sendDate;
+    }
+
+    public boolean is_fromCreator() {
+        return _fromCreator;
+    }
 
     //endregion
 
@@ -56,6 +73,13 @@ public class Message {
         this._contenu = contenu;
     }
 
+    public void set_sendDate(Date _sendDate) {
+        this._sendDate = _sendDate;
+    }
+
+    public void set_fromCreator(boolean _fromCreator) {
+        this._fromCreator = _fromCreator;
+    }
 
     //endregion
 }

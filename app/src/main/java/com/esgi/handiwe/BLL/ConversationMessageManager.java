@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.esgi.handiwe.DAL.ApiService;
 import com.esgi.handiwe.Model.Conversation;
+import com.esgi.handiwe.Model.Message;
 
 import java.util.ArrayList;
 
@@ -18,12 +19,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Pico on 05/10/2016.
  */
 
-public class ConversationManager {
+public class ConversationMessageManager {
 
     private ArrayList<Conversation> listConversation = new ArrayList<Conversation>();
+    private ArrayList<Message> listMessage=new ArrayList<Message>();
 
-    public ConversationManager(int id) {
-        apiGetAllconversation(id);
+    public ConversationMessageManager(int idUser) {
+        apiGetAllconversation(idUser);
+        for (Conversation item : listConversation) {
+            apiGetAllMessage(item.get_idUtilisateur1(), item.get_idUtilisateur2());
+        }
     }
 
     //region API
@@ -52,6 +57,33 @@ public class ConversationManager {
             }
 
 
+        });
+    }
+
+    public void apiGetAllMessage(int idA,int idB){
+        ArrayList<Message> listMessage = new ArrayList<Message>();
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ApiService.ENDPOINT)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiService apiService = retrofit.create(ApiService.class);
+
+        Call<ArrayList<Message>> call = apiService.getMessageByBothUser(Integer.toString(idA),Integer.toString(idB));
+        call.enqueue(new Callback<ArrayList<Message>>(){
+            @Override
+            public void onResponse(Call<ArrayList<Message>> call, Response<ArrayList<Message>> response) {
+                int statusCode = response.code();
+                ArrayList<Message> messages = response.body();
+                setAllMessage(messages, statusCode);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Message>> call, Throwable throwable) {
+                setAllMessage(new ArrayList<Message>(), 0);
+            }
         });
     }
 
@@ -86,5 +118,18 @@ public class ConversationManager {
         return conversation;
     }
 
+    public void setAllMessage(ArrayList<Message> list, int statusCode){
+        for (Message item: list) {
+            listMessage.add(item);
+        }
+    }
+
+    public ArrayList<Message> getListMessage() {
+        return listMessage;
+    }
+
+    public Conversation getConversationByMessage(Message mes){
+        return getConversationById(mes.get_idConversation());
+    }
 
 }

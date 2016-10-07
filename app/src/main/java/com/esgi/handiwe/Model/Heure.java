@@ -8,10 +8,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class Heure {
 
-    @SerializedName("")
+    @SerializedName("idHOUR")
     private int _id;
     private int _idDisponibilite;
+    @SerializedName("beginningHour")
     private int _heureDebut;
+    @SerializedName("endHour")
     private int _heureFin;
 
     public Heure(int _id, int _idDisponibilite, int _heureDebut, int _heureFin) {

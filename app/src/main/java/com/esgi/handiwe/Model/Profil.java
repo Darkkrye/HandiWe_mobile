@@ -1,9 +1,8 @@
 package com.esgi.handiwe.Model;
 
 /**
- * Created by nico on 06/10/2016.
+ * Created by Pico on 06/10/2016.
  */
-
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
@@ -11,20 +10,25 @@ import com.google.gson.annotations.SerializedName;
 public class Profil {
 
     private int     _id;
+    @SerializedName("idUSER")
     private int     _idUtilisateur;
+    @SerializedName("idSPORT")
     private int     _idSport;
+    // ou je le trouve ?
     private int     _idLieu;
+    // idem
     private int     _idTypeHandicap;
-
     private List<Integer> listDisponibilite;
+
+    // à enlever
     private boolean isInClub;
     private String  _nomClub;
     private String  _licence;
+    //en à enlever
 
     public Profil() {
         this.listDisponibilite = new ArrayList<Integer>();
     }
-
 
     public Profil(int _id, int _idUtilisateur, int _idSport, int _idLieu, int _idTypeHandicap, List<Integer> listDisponibilite, boolean isInClub, String _nomClub, String _licence) {
         this._id = _id;
