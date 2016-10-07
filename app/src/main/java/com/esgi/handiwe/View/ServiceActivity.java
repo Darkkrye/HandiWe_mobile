@@ -26,6 +26,10 @@ public class ServiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_service);
         ButterKnife.bind(this);
 
+        List<String> your_array_list = new ArrayList<String>();
+        your_array_list.add("foo");
+        your_array_list.add("bar");
+
         // This is the array adapter, it takes the context of the activity as a
         // first parameter, the type of list view as a second parameter and your
         // array as a third parameter.
@@ -36,7 +40,7 @@ public class ServiceActivity extends AppCompatActivity {
 
         //listCars.setAdapter(arrayAdapter);
 
-        VehiculeManager vh = new VehiculeManager(){
+        /*VehiculeManager vh = new VehiculeManager(){
             @Override
             public void onFinish() {
                 Log.d("TEST", "TEST TEST TEST");
@@ -46,7 +50,7 @@ public class ServiceActivity extends AppCompatActivity {
                 listCars.setAdapter(new RowItemAdapter(getApplication(), vehi, this));
                 Log.d("TEST", getListVehicule().size()+"");
             }
-        };
+        };*/
 
 //        Vehicule[] vehi = new Vehicule[vh.getListVehicule().size()];
 //        for(int i = 0; i < vh.getListVehicule().size(); i++)

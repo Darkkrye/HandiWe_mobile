@@ -106,7 +106,7 @@ public class RowItemAdapter extends BaseAdapter {
             reserve.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.d("TEST", "RESERVE " + v.get_departement() + " id " + v.get_id());
+                    Log.d("TEST", "RESERVE " + v.get_departement());
                     vm.apiSetVehiculeReserve(v.get_id());
                 }
             });

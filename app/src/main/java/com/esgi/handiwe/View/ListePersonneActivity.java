@@ -71,7 +71,7 @@ public class ListePersonneActivity extends AppCompatActivity implements OnItemSe
         dateTV = (TextView)findViewById(R.id.textViewDate);
         matinCH = (CheckBox)findViewById(R.id.checkBoxMatin);
         apresMidiCH = (CheckBox)findViewById(R.id.checkBoxApreMidi);
-        lvUtilisateur = (ListView)findViewById(R.id.ListViewUtilisateurSport);
+        lvUtilisateur = (ListView)findViewById(R.id.ListView1);
 
         // init imageButton
         imageButtonCal = (ImageButton) findViewById(R.id.ibCal);

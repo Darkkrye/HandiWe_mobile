@@ -18,11 +18,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Pico on 06/10/2016.
  */
 
-public abstract class VehiculeManager {
+public class VehiculeManager {
 
     private ArrayList<Vehicule> listVehicule;
 
-    public VehiculeManager() {
+    public VehiculeManager(ArrayList<Vehicule> listVehicule) {
         apiGetAllVehicule();
     }
 
@@ -45,8 +45,6 @@ public abstract class VehiculeManager {
                 int statusCode = response.code();
                 ArrayList<Vehicule> vehicules = response.body();
                 setAllVehicule(vehicules, statusCode);
-
-                onFinish();
             }
 
             @Override
@@ -59,22 +57,22 @@ public abstract class VehiculeManager {
     }
 
     public void apiSetVehiculeReserve(int id) {
-
+        Log.d("TEST", "IN SET RESERVE");
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiService.ENDPOINT)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        Log.d("TEST", "IN SET RESERVE");
 
         ApiService apiService = retrofit.create(ApiService.class);
-
-        Log.d("TEST", "ID CAR : " + id);
+        Log.d("TEST", "IN SET RESERVE");
 
         Call<Integer> idCar = apiService.setVehiculeReserve(id);
         idCar.enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
-                Log.d("TEST", response.code() + " " + response.message());
-                Log.d("TEST", "Delete car id : "+response);
+
+                Log.d("TEST", "Response is "+response);
             }
 
             @Override
@@ -82,6 +80,8 @@ public abstract class VehiculeManager {
 
             }
         });
+        Log.d("TEST", "IN SET RESERVE");
+
     }
     //endregion
 
@@ -101,7 +101,5 @@ public abstract class VehiculeManager {
         }
         apiSetVehiculeReserve(id);
     }
-
-    public abstract void onFinish();
 
 }
