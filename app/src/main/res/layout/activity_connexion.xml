@@ -69,17 +69,65 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="77dp"
+                android:layout_height="94dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="1"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:ems="10"
+                        android:id="@+id/editText"
+                        android:textAlignment="center"
+                        android:hint="confirmation mot de passe " />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="41dp">
+
+                        <TextView
+                            android:text="Date de naissance : "
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView8"
+                            android:textAppearance="@android:style/TextAppearance.Material"
+                            android:textSize="18sp" />
+
+                        <ImageButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/icone_calendrier"
+                            android:id="@+id/imageButton"
+                            android:background="@null"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:weightSum="1"
                 android:layout_marginTop="20dp"
-                >
+                android:id="@+id/Layout1">
 
                 <ImageButton
                     android:layout_width="175dp"
                     app:srcCompat="@drawable/connexion"
                     android:id="@+id/imageButtonConnexion"
                     android:background="@null"
-                    android:layout_height="130dp" />
+                    android:layout_height="130dp"
+                    />
 
                 <ImageButton
                     android:layout_width="wrap_content"
